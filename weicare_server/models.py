@@ -38,7 +38,7 @@ class Contact(models.Model):
 
 class Device(models.Model):
     name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='devices')
 

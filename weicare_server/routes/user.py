@@ -1,4 +1,5 @@
 
+from django.forms.models import model_to_dict
 from django.shortcuts import render
 
 # Create your views here.
@@ -10,7 +11,7 @@ from weicare_server.models import User
 def get_profile(request, user_id):
     if request.method == "GET":
         user = User.objects.get(id = user_id)
-        return JsonResponse( status=200, data = {"user": user  },  safe = False)
+        return JsonResponse( status=200, data = {"user": model_to_dict(user)  },  safe = False)
 
 
 def add_user(request) :
@@ -46,6 +47,7 @@ def add_user(request) :
 
 def get_all_profiles(request):
     if request.method == "GET":
-        users = User.objects.get()
-        return JsonResponse(status = 200, data= {"users" : users}, safe = False)
+        users = User.objects.all()
+        users = list(map(lambda user: model_to_dict(user), users))
+        return JsonResponse(status = 200, data= {"users" : list(users)}, safe = False)
 

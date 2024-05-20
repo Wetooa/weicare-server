@@ -1,4 +1,5 @@
 import random
+from django.http import JsonResponse
 from django.utils import timezone
 from weicare_server.models import User, Contact, Device, HealthData, Notification, SexType, HeartClassificationType
 
@@ -67,5 +68,6 @@ def seed_notifications(user, num_notifications=5):
             created_at=timezone.now()
         )
 
-def run_seeders():
+def run_seeders(request):
     seed_users()
+    return JsonResponse({"message": "Successfully seeded application"}, safe= False)

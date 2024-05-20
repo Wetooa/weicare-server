@@ -83,7 +83,7 @@ DATABASES = {
         "PASSWORD": "",
         "HOST": "127.0.0.1",
         "PORT": "3306",
-        "TEST": {               e
+        "TEST": {               
             "NAME": "weicare_server_test",
         },
     }

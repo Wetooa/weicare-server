@@ -47,9 +47,12 @@ class Device(models.Model):
 class HealthData(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='health_data')
 
-    troponin_level = models.IntegerField()
+    # TODO: temp lang muna
+    raw_troponin_readings = models.IntegerField()
     heart_rate = models.IntegerField()
-    blood_pressure = models.CharField(max_length=20)
+
+    systolic_bp = models.IntegerField()
+    diastolic_bp = models.IntegerField()
 
     heart_status = models.CharField(max_length=255)
     classification = models.CharField(max_length=10, choices=HeartClassificationType.choices)

@@ -23,7 +23,7 @@ urlpatterns = [
     path('contacts/<int:user_id>/<int:contact_id>/', contact.get_single_contact, name='get_single_contact'),
     path('contacts/update/<int:user_id>/<int:contact_id>/', contact.update_contact, name='update_contact'),
     path('contacts/delete/<int:user_id>/<int:contact_id>/', contact.delete_contact, name='delete_contact'),   
-    
+ 
     path('device/create/', device.create_device, name='create_device'),
     path('device/<int:user_id>/', device.get_all_devices, name='get_all_devices'),
     path('device/<int:user_id>/<int:device_id>/', device.get_single_device, name='get_single_device'),

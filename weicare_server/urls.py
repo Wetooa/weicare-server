@@ -2,9 +2,12 @@ from django.urls import path
 
 
 from weicare_server.routes import notification, health_data, contact, device, user, seed_data
+from . import views
+
 
 urlpatterns = [
-    path("/seed", seed_data.run_seeders(), name='run_seeders'),
+    path("", views.index, name="index"),
+    path("/seed", seed_data.run_seeders, name='run_seeders'),
 
     path("/user/profile/<int:user_id>", user.get_profile, name="get_profile"),
     path("/user/all_profiles", user.get_all_profiles, name="get_all_profiles"),

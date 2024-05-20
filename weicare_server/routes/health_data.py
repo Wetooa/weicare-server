@@ -23,9 +23,7 @@ def add_health_data(request, user_id):
             classification = data.get('classification')
 
             new_health_data = HealthData(
-                user=user,
-                raw_troponin_readings=raw_troponin_readings,
-                heart_rate=heart_rate,
+                user=user, raw_troponin_readings=raw_troponin_readings, heart_rate=heart_rate,
                 systolic_bp=systolic_bp,
                 diastolic_bp=diastolic_bp,
                 heart_status=heart_status,

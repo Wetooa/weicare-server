@@ -1,12 +1,14 @@
 from django.urls import path
 
 
-from weicare_server.routes import notification, health_data, contact, device, user, send_sms
+from weicare_server.routes import notification, health_data, contact, device, user, seed_data
 
 urlpatterns = [
-    path("/user/get_profile/<int:user_id>", user.get_profile, name="get_profile"),
-    path("/user/get_all_profiles", user.get_all_profiles, name="get_all_profiles"),
-    path("/user/add_user", user.add_user, name="add_user"),
+    path("/seed", seed_data.run_seeders(), name='run_seeders'),
+
+    path("/user/profile/<int:user_id>", user.get_profile, name="get_profile"),
+    path("/user/all_profiles", user.get_all_profiles, name="get_all_profiles"),
+    path("/user/add", user.add_user, name="add_user"),
 
     path('/health-data/add/<int:user_id>/', health_data.add_health_data, name='add_health_data'),
     path('/health-data/add/<int:user_id>/elevated', health_data.add_elevated_health_data, name='add_elevated_health_data'),
@@ -30,8 +32,6 @@ urlpatterns = [
     path('/notification/<int:user_id>/<int:notification_id>/', notification.get_single_notification, name='get_single_notification'),
     path('/notification/update/<int:user_id>/<int:notification_id>/', notification.update_notification, name='update_notification'),
     path('/notification/delete/<int:user_id>/<int:notification_id>/', notification.delete_notification, name='delete_notification'),
-
-
 ]
 
 
